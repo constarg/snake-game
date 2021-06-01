@@ -32,14 +32,13 @@ public class EatFoodListener implements GameEvent {
 
         if (lastPiece != null) {
             newPiece = new TailPiece(lastPiece.getPreviousPoint(), false);
-            newPiece.setPreviousTailPiece(lastPiece);
             snake.getTailPieces().add(newPiece);
         }
     }
 
     private void changeFoodPoint(SnakeFood snakeFood) {
-        int newX = getRandomCoordinate(ComponentDimensions.MAIN_WINDOW_WIDTH.size,100);
-        int newY = getRandomCoordinate(ComponentDimensions.MAIN_WINDOW_HEIGHT.size,100);
+        int newX = getRandomCoordinate(ComponentDimensions.MAIN_WINDOW_WIDTH.size - snakeFood.getEntityDimension().width,200);
+        int newY = getRandomCoordinate(ComponentDimensions.MAIN_WINDOW_HEIGHT.size - snakeFood.getEntityDimension().height,200);
 
         Point newPoint = new Point(newX, newY);
         snakeFood.setEntityPoint(newPoint);

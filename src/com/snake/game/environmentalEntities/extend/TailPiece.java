@@ -11,8 +11,8 @@ import java.awt.Dimension;
 public class TailPiece extends EnvironmentalEntityDetails {
 
     private static int pieceIndex = 0;
+    private int tailIndex;
     private Point previousPoint;
-    private TailPiece previousTailPiece;
     private final boolean head;
 
     public TailPiece(Point point, boolean head) {
@@ -24,6 +24,7 @@ public class TailPiece extends EnvironmentalEntityDetails {
         this.entityShape.setFill(ComponentColors.TAIL_COLOR.color);
         this.previousPoint = entityPoint;
         this.head = head;
+        this.tailIndex = TailPiece.pieceIndex;
         TailPiece.pieceIndex++;
     }
 
@@ -35,15 +36,9 @@ public class TailPiece extends EnvironmentalEntityDetails {
         return this.previousPoint;
     }
 
-    public void setPreviousTailPiece(TailPiece previousTailPiece) {
-        this.previousTailPiece = previousTailPiece;
+    public int getTailIndex() {
+        return this.tailIndex;
     }
-
-    public TailPiece getPreviousTailPiece() {
-        return this.previousTailPiece;
-    }
-
-
     public boolean isHead() {
         return this.head;
     }

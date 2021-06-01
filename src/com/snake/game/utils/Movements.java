@@ -2,8 +2,10 @@ package com.snake.game.utils;
 
 import com.snake.game.constants.SnakeAcceleration;
 import com.snake.game.entities.Snake;
+import com.snake.game.environmentalEntities.extend.TailPiece;
 
 import java.awt.Point;
+import java.util.LinkedList;
 
 public class Movements {
 
@@ -38,8 +40,8 @@ public class Movements {
             Point newPoint;
 
             if (!tailPiece.isHead()) {
-                Point prevTailPoint = tailPiece.getPreviousTailPiece().getPreviousPoint();
-                newPoint = Movements.calculateMovement(prevTailPoint, direction);
+                TailPiece prevTail = Tools.getTailFromIndex((LinkedList<TailPiece>)snake.getTailPieces(), tailPiece.getTailIndex()-1);
+                newPoint = prevTail.getPreviousPoint();
             }
             else {
                 Point currTailPoint = tailPiece.getEntityPoint();

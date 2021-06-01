@@ -49,11 +49,14 @@ public class RefreshGame {
 
     private static void snakeEatFood(Snake snake, SnakeFood food) {
         TailPiece head = ((LinkedList<TailPiece>) snake.getTailPieces()).getFirst();
-        double x = head.getEntityShape().getX() - food.getEntityShape().getX();
-        double y = head.getEntityShape().getY() - food.getEntityShape().getY();
-        double distance = Math.abs(Math.sqrt(x + y));
+        // distance = sqrt ( ( x1 - x2 )^2 + ( y1 - y2 )^2 )
+        double distance = Tools.calculateDistance(head.getEntityShape().getX(),
+                                                  food.getEntityShape().getX(),
+                                                  head.getEntityShape().getY(),
+                                                  food.getEntityShape().getY());
 
-        if (distance < 4) {
+        System.out.println(distance);
+        if (distance <= 5) {
             try {
                 manager.eventEmitter(ListenersIdentifiers.EAT_FOOD_LISTENER.eventName, snake, food);
             }
@@ -71,7 +74,7 @@ public class RefreshGame {
     public static void refreshGame(Snake snake, SnakeFood food, Group group) {
         group.getChildren().add(food.getEntityShape());
 
-        Timeline timeline = new Timeline(new KeyFrame(Duration.millis(20), t -> {
+        Timeline timeline = new Timeline(new KeyFrame(Duration.millis(10), t -> {
             RefreshGame.refreshChildren(snake, group);
             RefreshGame.wallCollision(snake);
             RefreshGame.snakeEatFood(snake, food);
