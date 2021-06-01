@@ -8,7 +8,7 @@ public class WallCollisionListener implements GameEvent {
 
     @Override
     public void emit(Snake snake) {
-
+        // toDO make something to end the game.
     }
 
     @Override

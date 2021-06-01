@@ -1,5 +1,6 @@
 package com.snake.game.eventHandling.impl.GameEventListeners;
 
+import com.snake.game.constants.ComponentDimensions;
 import com.snake.game.eventHandling.events.GameEvent;
 import com.snake.game.entities.Snake;
 import com.snake.game.environmentalEntities.extend.SnakeFood;
@@ -30,19 +31,18 @@ public class EatFoodListener implements GameEvent {
         TailPiece newPiece;
 
         if (lastPiece != null) {
-            newPiece = new TailPiece(lastPiece.getEntityPoint());
+            newPiece = new TailPiece(lastPiece.getEntityPoint(), false);
             snake.getTailPieces().add(newPiece);
         }
     }
 
     private void changeFoodPoint(SnakeFood snakeFood) {
-        int newX = getRandomCoordinate(5,1);
-        int newY = getRandomCoordinate(10,2);
-        // toDO fill the above parameters with the width and height of the scene.
-        // toDO for the x fill it with the width of the scene and etc for the y.
+        int newX = getRandomCoordinate(ComponentDimensions.MAIN_WINDOW_WIDTH.size,100);
+        int newY = getRandomCoordinate(ComponentDimensions.TAIL_PIECE_HEIGHT.size, 100);
 
         Point newPoint = new Point(newX, newY);
-        snakeFood.setEntityPoint(newPoint);
+        snakeFood.getEntityShape().setX(newPoint.getX());
+        snakeFood.getEntityShape().setY(newPoint.getY());
     }
 
     /**

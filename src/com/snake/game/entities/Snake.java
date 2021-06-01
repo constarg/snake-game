@@ -2,6 +2,7 @@ package com.snake.game.entities;
 
 import com.snake.game.constants.ComponentConstants;
 import com.snake.game.environmentalEntities.extend.TailPiece;
+import javafx.scene.shape.Rectangle;
 
 import java.awt.Point;
 import java.util.LinkedList;
@@ -12,10 +13,11 @@ public class Snake {
 
     private final Queue<TailPiece> tailPieces;
 
+
     public Snake() {
         this.tailPieces = new LinkedList<>();
         // Head.
-        this.tailPieces.add(new TailPiece(new Point(ComponentConstants.SNAKE_START_X.constant, 0)));
+        this.tailPieces.add(new TailPiece(new Point(ComponentConstants.SNAKE_START_X.constant, ComponentConstants.SNAKE_START_Y.constant),true));
     }
 
     public Queue<TailPiece> getTailPieces() {
