@@ -7,25 +7,25 @@ import java.awt.Point;
 
 public class Movements {
 
-    private static Point calculateMovement(Point point, String direction, boolean isPrevious) {
+    private static Point calculateMovement(Point point, String direction) {
         int newX = 0;
         int newY = 0;
 
         switch (direction) {
             case "UP":
                 newX = point.x;
-                newY = (isPrevious)? point.y + SnakeAcceleration.SNAKE_DY.d : point.y - SnakeAcceleration.SNAKE_DY.d;
+                newY = point.y - SnakeAcceleration.SNAKE_DY.d;
                 break;
             case "DOWN":
                 newX = point.x;
-                newY = (isPrevious)? point.y - SnakeAcceleration.SNAKE_DY.d : point.y + SnakeAcceleration.SNAKE_DY.d;
+                newY = point.y + SnakeAcceleration.SNAKE_DY.d;
                 break;
             case "LEFT":
-                newX = (isPrevious)? point.x + SnakeAcceleration.SNAKE_DX.d : point.x - SnakeAcceleration.SNAKE_DX.d;
+                newX = point.x - SnakeAcceleration.SNAKE_DX.d;
                 newY = point.y;
                 break;
             case "RIGHT":
-                newX = (isPrevious)? point.x - SnakeAcceleration.SNAKE_DX.d : point.x + SnakeAcceleration.SNAKE_DX.d;
+                newX = point.x + SnakeAcceleration.SNAKE_DX.d;
                 newY = point.y;
                 break;
         }
@@ -38,16 +38,16 @@ public class Movements {
             Point newPoint;
 
             if (!tailPiece.isHead()) {
-                Point prevTailPoint = tailPiece.getPreviousTailPoint();
-                newPoint = Movements.calculateMovement(prevTailPoint, direction, true);
+                Point prevTailPoint = tailPiece.getPreviousTailPiece().getPreviousPoint();
+                newPoint = Movements.calculateMovement(prevTailPoint, direction);
             }
             else {
-                System.out.println("head");
                 Point currTailPoint = tailPiece.getEntityPoint();
-                newPoint = Movements.calculateMovement(currTailPoint, direction, false);
+                newPoint = Movements.calculateMovement(currTailPoint, direction);
             }
             tailPiece.getEntityShape().setX(newPoint.getX());
             tailPiece.getEntityShape().setY(newPoint.getY());
+            tailPiece.setPreviousPoint(tailPiece.getEntityPoint());
             tailPiece.setEntityPoint(newPoint);
         });
     }
