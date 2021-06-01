@@ -1,26 +1,26 @@
 package com.snake.game.utils;
 
+import com.snake.game.entities.Snake;
 import javafx.event.EventHandler;
 import javafx.scene.input.KeyEvent;
 
-public class MovementHandler {
+public class Keyboard {
 
-    public static EventHandler<KeyEvent> moveSnake() {
+    public static EventHandler<KeyEvent> moveSnake(Snake snake) {
 
         return keyEvent -> {
-            // toDO end the movements.
             switch (keyEvent.getCode()) {
                 case UP:
-                    // move up.
+                    Movements.movement(snake, "UP");
                     break;
                 case DOWN:
-                    // move down.
+                    Movements.movement(snake, "DOWN");
                     break;
                 case LEFT:
-                    // move left.
+                    Movements.movement(snake, "LEFT");
                     break;
                 case RIGHT:
-                    // move right.
+                    Movements.movement(snake, "RIGHT");
                     break;
             }
         };
