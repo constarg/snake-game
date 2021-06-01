@@ -30,7 +30,7 @@ public class EatFoodListener implements GameEvent {
         TailPiece newPiece;
 
         if (lastPiece != null) {
-            newPiece = new TailPiece(lastPiece.getEntityPoint(), lastPiece.getDelay());
+            newPiece = new TailPiece(lastPiece.getEntityPoint());
             snake.getTailPieces().add(newPiece);
         }
     }
@@ -51,7 +51,7 @@ public class EatFoodListener implements GameEvent {
      * @referance https://stackoverflow.com/questions/363681/how-do-i-generate-random-integers-within-a-specific-range-in-java
      * @return the random value.
      */
-    private int getRandomCoordinate(Integer max, Integer min) {
+    private int getRandomCoordinate(int max, int min) {
         return random.nextInt( (max - min) + 1) + min;
     }
 }

@@ -10,6 +10,6 @@ public class SnakeFood extends EnvironmentalEntityDetails {
 
     public SnakeFood(Point initialPoint) {
         this.entityPoint = initialPoint;
-        this.entityDimension = new Dimension(ComponentDimensions.TAIL_PIECE_WIDTH.size, ComponentDimensions.TAIL_PIECE_HEIGHT.size);
+        this.entityDimension = new Dimension(ComponentDimensions.FOOD_WIDTH.size, ComponentDimensions.FOOD_HEIGHT.size);
     }
 }

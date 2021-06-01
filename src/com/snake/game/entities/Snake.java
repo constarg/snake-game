@@ -15,7 +15,7 @@ public class Snake {
     public Snake() {
         this.tailPieces = new LinkedList<>();
         // Head.
-        this.tailPieces.add(new TailPiece(new Point(ComponentConstants.SNAKE_START_X.constant, ComponentConstants.SNAKE_START_Y.constant), 0));
+        this.tailPieces.add(new TailPiece(new Point(ComponentConstants.SNAKE_START_X.constant, 0)));
     }
 
     public Queue<TailPiece> getTailPieces() {
