@@ -32,9 +32,9 @@ public class RefreshGame {
     private static void wallCollision(Snake snake) {
         TailPiece head = ((LinkedList<TailPiece>) snake.getTailPieces()).getFirst();
 
-        if (head.getEntityShape().getX() + head.getEntityShape().getWidth()*2 >= ComponentDimensions.MAIN_WINDOW_WIDTH.size
+        if (head.getEntityShape().getX() + head.getEntityShape().getWidth() >= ComponentDimensions.MAIN_WINDOW_WIDTH.size
             || head.getEntityShape().getX() - head.getEntityShape().getWidth() <= 0
-            || head.getEntityShape().getY() + head.getEntityShape().getWidth()*2 >= ComponentDimensions.MAIN_WINDOW_HEIGHT.size
+            || head.getEntityShape().getY() + head.getEntityShape().getWidth() >= ComponentDimensions.MAIN_WINDOW_HEIGHT.size
             || head.getEntityShape().getY() - head.getEntityShape().getWidth() <= 0) {
 
             try {
