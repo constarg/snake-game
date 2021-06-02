@@ -8,9 +8,10 @@ import javafx.scene.Group;
 import javafx.scene.Scene;
 
 public class UserInterface {
+    private static Scene scene;
 
     public static Scene configureScene(Group group, Snake snake) {
-        Scene scene = new Scene(
+        UserInterface.scene = new Scene(
                 group,
                 ComponentDimensions.MAIN_WINDOW_WIDTH.size,
                 ComponentDimensions.MAIN_WINDOW_HEIGHT.size
@@ -19,5 +20,9 @@ public class UserInterface {
         scene.setOnKeyPressed(Keyboard.moveSnake(snake));
 
         return scene;
+    }
+
+    public static Scene getScene() {
+        return UserInterface.scene;
     }
 }

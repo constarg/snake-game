@@ -2,6 +2,7 @@ package com.snake.game.utils;
 
 import com.snake.game.environmentalEntities.extend.TailPiece;
 
+import java.awt.*;
 import java.util.LinkedList;
 
 public class Tools {
@@ -10,7 +11,7 @@ public class Tools {
         return pieces.get(index);
     }
 
-    public static double calculateDistance(double x1, double x2, double y1, double y2) {
-        return Math.sqrt(Math.pow((x1-x2),2) + Math.pow((y1-y2),2));
+    public static double calculateDistance(Point point1, Point point2) {
+        return Math.sqrt(Math.pow((point1.x-point2.x),2) + Math.pow((point1.y-point2.y),2));
     }
 }

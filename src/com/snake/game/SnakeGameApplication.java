@@ -40,13 +40,12 @@ public class SnakeGameApplication extends Application {
     }
 
     @Override
-    public void start(Stage stage) throws Exception {
+    public void start(Stage stage) {
         initializeComponents();
         configureEntities();
         configureUserInterface();
         configureStage(stage);
     }
-
     public static void main(String[] args) {
         launch(args);
     }
