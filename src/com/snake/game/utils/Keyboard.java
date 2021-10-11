@@ -11,16 +11,16 @@ public class Keyboard {
         return keyEvent -> {
             switch (keyEvent.getCode()) {
                 case UP:
-                    Movements.movement(snake, "UP");
+                    Movements.setCurrentDirection("UP");
                     break;
                 case DOWN:
-                    Movements.movement(snake, "DOWN");
+                    Movements.setCurrentDirection("DOWN");
                     break;
                 case LEFT:
-                    Movements.movement(snake, "LEFT");
+                    Movements.setCurrentDirection("LEFT");
                     break;
                 case RIGHT:
-                    Movements.movement(snake, "RIGHT");
+                    Movements.setCurrentDirection("RIGHT");
                     break;
             }
         };

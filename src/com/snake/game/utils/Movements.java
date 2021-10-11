@@ -8,6 +8,7 @@ import java.awt.Point;
 import java.util.LinkedList;
 
 public class Movements {
+    private static String currentDirection = "RIGHT";
 
     private static Point calculateMovement(Point point, String direction) {
         int newX = 0;
@@ -35,17 +36,20 @@ public class Movements {
         return new Point(newX, newY);
     }
 
-    public static void movement(Snake snake, String direction) {
+    public static void setCurrentDirection(String newDirection) {
+        Movements.currentDirection = newDirection;
+    }
+
+    public static void movement(Snake snake) {
         snake.getTailPieces().forEach( tailPiece -> {
             Point newPoint;
-
             if (!tailPiece.isHead()) {
                 TailPiece prevTail = Tools.getTailFromIndex((LinkedList<TailPiece>)snake.getTailPieces(), tailPiece.getTailIndex()-1);
                 newPoint = prevTail.getPreviousPoint();
             }
             else {
                 Point currTailPoint = tailPiece.getEntityPoint();
-                newPoint = Movements.calculateMovement(currTailPoint, direction);
+                newPoint = Movements.calculateMovement(currTailPoint, currentDirection);
             }
             tailPiece.getEntityShape().setX(newPoint.getX());
             tailPiece.getEntityShape().setY(newPoint.getY());
