@@ -15,6 +15,8 @@ import javafx.util.Duration;
 
 import java.util.LinkedList;
 
+import static com.snake.game.utils.Movements.movement;
+
 public class RefreshGame {
     private static final GameEventManager manager = new GameEventManager();
     private static Timeline timeline;
@@ -72,7 +74,8 @@ public class RefreshGame {
                 distance = Tools.calculateDistance(head.getEntityPoint(),
                                                    tailPiece.getEntityPoint());
             }
-            if (Math.ceil(distance) <= 9) {
+            if (Math.ceil(distance) < 5) {
+                System.out.println(distance);
                 try {
                     manager.eventEmitter(ListenersIdentifiers.HEAD_TOUCH_TAIL_LISTENER.eventName, snake, null);
                 } catch (UnknownListener unknownListener) {
@@ -80,6 +83,10 @@ public class RefreshGame {
                 }
             }
         });
+    }
+
+    private static void moveSnake(Snake snake) {
+        movement(snake);
     }
 
     public static Timeline getGameClock() {
@@ -90,6 +97,7 @@ public class RefreshGame {
         group.getChildren().add(food.getEntityShape());
 
         RefreshGame.timeline = new Timeline(new KeyFrame(Duration.millis(10), t -> {
+            RefreshGame.moveSnake(snake);
             RefreshGame.refreshChildren(snake, group);
             RefreshGame.wallCollision(snake);
             RefreshGame.snakeEatFood(snake, food);
